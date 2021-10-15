@@ -1,9 +1,15 @@
 import requests
 import datetime
-from config import tg_bot_token, open_weather_token
+import os
+from dotenv import load_dotenv
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
+
+load_dotenv(".env")
+
+tg_bot_token = os.getenv("tg_bot_token")
+open_weather_token = os.getenv("open_weather_token")
 
 bot = Bot(token=tg_bot_token)
 dp = Dispatcher(bot)
