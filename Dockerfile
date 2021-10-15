@@ -8,7 +8,9 @@ ENV TELEGRAM_API_TOKEN="2017714130:AAH7tGE_0UK6MiqCgNF-BanNHg9JoV6BdUs"
 ENV TZ=Asia/Yekaterinburg
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN pip install -U pip && pip install requirements.txt
+COPY requirements.txt ./
 COPY *.py ./
+
+RUN python -m pip install --upgrade pip && pip install -r requirements.txt
 
 ENTRYPOINT ["python", "main.py"]
